@@ -11,7 +11,7 @@ Python's nltk offers a number of text classification algorithms. The idea is to 
 it a feature set of specific format and test the algorithm on a large scale. Unfortunately, creating such feature set of sufficient size is very cumbersome and not so feasible, and therefore training one is not covered here. There is, however, a feature extracting function and instructions as to how to train a nltk classification model on your own with the right dataset. Refer to **mass_classification.py** for details.
 
 ## Getting Started
-To get started, read the files in the following order: fetching_terms_and_descriptions -> dictionary.py -> by_keywords.py -> description_patterns.py -> by_descriptions.py -> hd_type.py
+To get started, read the files in the following order: dictionary.py -> by_keywords.py -> description_patterns.py -> by_descriptions.py -> hd_type.py
 
 ### Requirements 
 
