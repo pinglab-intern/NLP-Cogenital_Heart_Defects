@@ -11,9 +11,17 @@ Python's nltk offers a number of text classification algorithms. The idea is to 
 it a feature set of specific format and test the algorithm on a large scale. Unfortunately, creating such feature set of sufficient size is very cumbersome and not so feasible, and therefore training one is not covered here. There is, however, a feature extracting function and instructions as to how to train a nltk classification model on your own with the right dataset. Refer to **mass_classification.py** for details.
 
 ## Getting Started
-To get started, read the files in the following order: dictionary.py -> by_keywords.py -> description_patterns.py -> by_descriptions.py -> hd_type.py
+To get started, read the files in the following order: `dictionary.py` -> `by_keywords.py` -> `description_patterns.py` -> `by_descriptions.py` -> `hd_type.py`
 
 ### Requirements 
+
+Requires [NLTK](https://www.nltk.org/). This can usually be installed with `pip` as:
+
+`pip install nltk`
+
+or
+
+`pip install --user -U nltk`
 
 ### Walkthrough
 The data for every congenital heart defect type can be found here: https://www.nlm.nih.gov/databases/download/mesh.html 
@@ -23,13 +31,13 @@ The following are instructions as to how to read in a file in ASCII format and n
 1. Access the link above. There, click "Current Production Year MeSH" under ASCII format. What is needed is the binary file named "d{current_year}.bin".
 2. Open up a Python console, set the working directory to where the file is saved (alternatively specify full path when feeding the file name) and type in the following:
     
-   with open('d2020.bin', mode='rb') as file:
+   `with open('d2020.bin', mode='rb') as file:
        content = file.read()
-   decoded = content.decode('utf-8')
+   decoded = content.decode('utf-8')`
 
 3. To confirm successful reading type in:
 
-   decoded[:1500]
+   `decoded[:1500]`
    
    and you should see something like the following:
    
@@ -93,12 +101,12 @@ The following are instructions as to how to read in a file in ASCII format and n
 5. Here's a useful function to help out. We'll create a function "search_id" which will print only the information associated with a given unique ID.
    But first import Python's regular expression module.
    
-   import re
+  `import re`
    
-   def search_id(uid):
+  ` def search_id(uid):
      pattern = r'\*NEWRECORD(?:(?!\*NEWRECORD)[\s\S])*'+uid
      result = re.findall(pattern, decoded)
-     return result
+     return result `
     
    Now call search_id("D013771") to see the following:
    
@@ -111,11 +119,11 @@ The following are instructions as to how to read in a file in ASCII format and n
  
 6. Great. But fishing all the entry terms (basically A.K.A's) out of them seem very cumbersome. So define another function for that:
 
-   def search_id_k(uid):
+   `def search_id_k(uid):
      head = re.findall(r'(?<=\nMH = )[^\n]+(?=\n)', " ".join(search_id(uid)))
      p_entry = re.findall(r'(?<=\nPRINT ENTRY = )[^\n]+?(?=\||\n)', " ".join(search_id(uid)))
      entry = re.findall(r'(?<=\nENTRY = )[^\n]+?(?=\||\n)', " ".join(search_id(uid)))
-     return head + p_entry + entry
+     return head + p_entry + entry`
      
    search_id_k("D013771") returns
    
@@ -129,9 +137,9 @@ The following are instructions as to how to read in a file in ASCII format and n
     
 7. Lastly, create a dictionary object that maps each "head term" with its entry terms.
 
-   d = {}
+   `d = {}
    for each in ids:
-     d[search_id_k(each)[0]] = search_id_k(each)
+     d[search_id_k(each)[0]] = search_id_k(each)`
    
    This takes some time. 
    
