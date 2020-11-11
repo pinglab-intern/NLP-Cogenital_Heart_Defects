@@ -16,7 +16,7 @@ To get started, read the files in the following order: dictionary.py -> by_keywo
 ### Requirements 
 
 ### Walkthrough
-The data for every cogenital heart defect type can be found here: https://www.nlm.nih.gov/databases/download/mesh.html 
+The data for every congenital heart defect type can be found here: https://www.nlm.nih.gov/databases/download/mesh.html 
 
 The following are instructions as to how to read in a file in ASCII format and neatly organise the data there using the Python programming language.
 
@@ -45,10 +45,10 @@ The following are instructions as to how to read in a file in ASCII format and n
    
    DO NOT print the whole content as you will be bombarded with endless texts.
    
-4. The file contains every medical term acknowledged by the National Library of Medicine, not just cogenital heart defect terms. Each term has a unique ID that can be found online:
+4. The file contains every medical term acknowledged by the National Library of Medicine, not just congenital heart defect terms. Each term has a unique ID that can be found online:
    https://meshb.nlm.nih.gov/record/ui?ui=D006330
    
-   Through this I have garnered all the IDs associated with cogenital heart defect terms. They are the following:
+   Through this I have garnered all the IDs associated with congenital heart defect terms. They are the following:
    
    ids = ['D004062',
     'D001017',
